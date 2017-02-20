@@ -20,7 +20,8 @@ posts = Post.all
     body: RandomData.random_paragraph
   )
 end
-
+p = posts.find_or_create_by!(title: "This is my title!", body: "This is my body. It has a couple of sentences!")
+p.comments.find_or_create_by!(body: "This is my comment body. It has a couple of sentences too!")
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
