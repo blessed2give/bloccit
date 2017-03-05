@@ -9,25 +9,25 @@ class PostsController < ApplicationController
   end
 
   def create
-# #9
-  @post = Post.new
-  @post.title = params[:post][:title]
-  @post.body = params[:post][:body]
-  @topic = Topic.find(params[:topic_id])
- # #35
-  @post.topic = @topic
+  # #9
+    @post = Post.new
+    @post.title = params[:post][:title]
+    @post.body = params[:post][:body]
+    @topic = Topic.find(params[:topic_id])
+   # #35
+    @post.topic = @topic
 
-# #10
-  if @post.save
-# #11
-    flash[:notice] = "Post was saved."
-    redirect_to [@topic, @post]
-  else
-# #12
-    flash.now[:alert] = "There was an error saving the post. Please try again."
-    render :new
+  # #10
+    if @post.save
+  # #11
+      flash[:notice] = "Post was saved."
+      redirect_to [@topic, @post]
+    else
+  # #12
+      flash.now[:alert] = "There was an error saving the post. Please try again."
+      render :new
+    end
   end
-end
 
   def edit
     @post = Post.find(params[:id])
