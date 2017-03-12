@@ -3,9 +3,9 @@ class FavoriteMailer < ApplicationMailer
 
   def new_comment(user, post, comment)
 
-    headers["Message-ID"] = "<comments/#{comment.id}@bloccit.com>"
-    headers["In-Reply-To"] = "<post/#{post.id}@bloccit.com>"
-    headers["References"] = "<post/#{post.id}@bloccit.com>"
+    headers["Message-ID"] = "<comments/#{comment.id}@your-app-name.example>"
+    headers["In-Reply-To"] = "<post/#{post.id}@your-app-name.example>"
+    headers["References"] = "<post/#{post.id}@your-app-name.example>"
 
     @user = user
     @post = post
@@ -14,16 +14,14 @@ class FavoriteMailer < ApplicationMailer
     mail(to: user.email, subject: "New comment on #{post.title}")
   end
 
-  def new_post(user, post, comment)
+  def new_post(post)
 
-    headers["Message-ID"] = "<comments/#{comment.id}@bloccit.com>"
-    headers["In-Reply-To"] = "<post/#{post.id}@bloccit.com>"
-    headers["References"] = "<post/#{post.id}@bloccit.com>"
+    headers["Message-ID"] = "<post/#{post.id}@your-app-name.example>"
+    headers["In-Reply-To"] = "<post/#{post.id}@your-app-name.example>"
+    headers["References"] = "<post/#{post.id}@your-app-name.example>"
 
-    @user = user
     @post = post
-    @comment = comment
 
-    mail(to: user.email, subject: "New comment on #{post.title}")
+    mail(to: post.user.email, subject: "You are now following #{post.title}")
   end
 end

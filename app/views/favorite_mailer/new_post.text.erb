@@ -1,8 +1,1 @@
-New comment to "<%= @post.title %>"
-<%= "=" * (@post.title.length + 12) %>
-
-By: <%= @comment.user.name %>
-
-<%= @comment.body %>
-
-Visit online at: <%= topic_post_url(@post.topic, @post, anchor: "comment-#{@comment.id}") %>
+You are now following "<%= @post.title %>", you will be notified of all comments. To unfollow this post, please unfavorite the <%= link_to "post", topic_post_url(@post.topic, @post) %>
