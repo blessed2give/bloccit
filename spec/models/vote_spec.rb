@@ -12,8 +12,8 @@ RSpec.describe Vote, type: :model do
   it { is_expected.to validate_inclusion_of(:value).in_array([-1, 1]) }
 
   describe "update_post callback" do
-    let(:vote) { create(:vote, value: 1) }
-    
+    let(:vote) { build(:vote, value: 1, post: post) }
+
     it "triggers update_post on save" do
       expect(vote).to receive(:update_post).at_least(:once)
       vote.save!
